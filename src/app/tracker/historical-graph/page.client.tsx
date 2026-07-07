@@ -263,7 +263,8 @@ function isWeekend(date: string): boolean {
 function isHoliday(date: string): boolean {
   return [
     "2026-04-03",
-    "2026-05-18"
+    "2026-05-18",
+    "2026-07-01"
   ].includes(date)
 }
 
