@@ -54,60 +54,11 @@ async function getBusCountGraph(data: BusCountData[]): Promise<ChartData<"line">
   return {
     labels: data.map((d) => d.date),
     datasets: [{
-      label: "EV Novabus",
-      data: data.map((d) => d.busTypes["LFSe+"]),
+      label: "Buses in service",
+      data: data.map((d) => Object.values(d.busTypes).reduce((acc, v) => acc + v, 0)),
       yAxisID: "yAxis",
       borderColor: "#00ff37ff",
       backgroundColor: "#00ff3763",
-      fill: "stack"
-    }, {
-      label: "EV New Flyer",
-      data: data.map((d) => d.busTypes["XE40"]),
-      yAxisID: "yAxis",
-      borderColor: "#51b218ff",
-      backgroundColor: "#50b2185a",
-      fill: "stack"
-    }, {
-      label: "2019 Nova Bus",
-      data: data.map((d) => d.busTypes["LFS"]),
-      yAxisID: "yAxis",
-      borderColor: "#0060faff",
-      backgroundColor: "#0060fa50",
-      fill: "stack"
-    }, {
-      label: "GRT Used Nova Bus",
-      data: data.map((d) => d.busTypes["LFS-GRT"]),
-      yAxisID: "yAxis",
-      borderColor: "#a000fcff",
-      backgroundColor: "#a000fc44",
-      fill: "stack"
-    }, {
-      label: "Artic",
-      data: data.map((d) => d.busTypes["D60LFR"]),
-      yAxisID: "yAxis",
-      borderColor: "#fa00f2ff",
-      backgroundColor: "#fa00f25b",
-      fill: "stack"
-    }, {
-      label: "Older Artic",
-      data: data.map((d) => d.busTypes["D60LF"]),
-      yAxisID: "yAxis",
-      borderColor: "#b11fadff",
-      backgroundColor: "#b11fac5f",
-      fill: "stack"
-    }, {
-      label: "Double decker",
-      data: data.map((d) => d.busTypes["Enviro500"]),
-      yAxisID: "yAxis",
-      borderColor: "#fa0000ff",
-      backgroundColor: "#fa000045",
-      fill: "stack"
-    }, {
-      label: "Invero",
-      data: data.map((d) => d.busTypes["D40i"]),
-      yAxisID: "yAxis",
-      borderColor: "#5fb6a9ff",
-      backgroundColor: "#5fb6a951",
       fill: "stack"
     }].reverse()
   };
@@ -128,7 +79,7 @@ export default function PageClient() {
   const [excludeHolidays, setExcludeHolidays] = useState(true);
   useEffect(() => {
     if (busCountData) {
-      setBusCountDataFiltered(busCountData.filter((v) => (!excludeWeekends || !isWeekend(v.date)) 
+      setBusCountDataFiltered(busCountData.filter((v) => (isWeekend(v.date)) 
         && (!excludeHolidays || !isHoliday(v.date))))
     }
   }, [excludeHolidays, excludeWeekends, busCountData]);
@@ -264,7 +215,9 @@ function isHoliday(date: string): boolean {
   return [
     "2026-04-03",
     "2026-05-18",
-    "2026-07-01"
+    "2026-07-01",
+    "2026-07-05",
+    "2026-08-03"
   ].includes(date)
 }
 
@@ -277,7 +230,7 @@ function getChartOptions(name: string): ChartOptions<"line"> {
       yAxis: {
         ticks: {
           font: {
-            size: 16
+            size: 40
           }
         },
         beginAtZero: true,
@@ -294,7 +247,7 @@ function getChartOptions(name: string): ChartOptions<"line"> {
         position: "top",
         labels: {
           font: {
-            size: 16
+            size: 40
           }
         }
       },
@@ -302,18 +255,18 @@ function getChartOptions(name: string): ChartOptions<"line"> {
         display: true,
         text: name,
         font: {
-          size: 20
+          size: 45
         }
       },
       tooltip: {
         titleFont: {
-          size: 25
+          size: 40
         },
         bodyFont: {
-          size: 16
+          size: 40
         },
         footerFont: {
-          size: 25
+          size: 40
         },
         callbacks: {
           footer: tooltipFooter
