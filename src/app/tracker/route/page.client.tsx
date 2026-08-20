@@ -61,6 +61,7 @@ function RouteComponent(props: RouteComponentProps) {
               const canceled = b.canceled && !b.actualStartTime;
               const untracked = !b.canceled
                 && !b.actualStartTime
+                && props.date.getTime() <= new Date().getTime()
                 && ((props.trips.some((b, i) => i > index && b.actualStartTime)) 
                   || props.date.toLocaleDateString() != new Date().toLocaleDateString()
                   || timeStringDiff(new Date().toLocaleTimeString(), b.scheduledEndTime) > 60 * 60);
