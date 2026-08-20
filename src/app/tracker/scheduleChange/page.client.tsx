@@ -15,14 +15,33 @@ interface ChangeData {
 }
 
 enum ServiceChange {
+  FallMonday = "fall26Mon",
+  FallFriday = "fall26Fri",
+  FallSaturday = "fall26Sat",
+  FallSunday = "fall26Sun",
   SummerMonday = "summer26Mon",
   SummerFriday = "summer26Fri",
   SummerSaturday = "summer26Sat",
-  SummerSunday = "summer26Sun",
-  CanadaDay = "canada26",
+  SummerSunday = "summer26Sun"
 }
 
 const serviceChanges = {
+  [ServiceChange.FallMonday]: {
+    before: "2026-08-24",
+    after: "2026-09-14",
+  },
+  [ServiceChange.FallFriday]: {
+    before: "2026-08-21",
+    after: "2026-09-11",
+  },
+  [ServiceChange.FallSaturday]: {
+    before: "2026-08-22",
+    after: "2026-09-12",
+  },
+  [ServiceChange.FallSunday]: {
+    before: "2026-08-23",
+    after: "2026-09-13",
+  },
   [ServiceChange.SummerMonday]: {
     before: "2026-06-22",
     after: "2026-06-29",
@@ -38,14 +57,22 @@ const serviceChanges = {
   [ServiceChange.SummerSunday]: {
     before: "2026-06-21",
     after: "2026-07-05",
-  },
-  [ServiceChange.CanadaDay]: {
-    before: "2026-06-22",
-    after: "2026-07-01",
   }
 };
 
 const serviceChangeOptions = [{
+  value: ServiceChange.FallMonday,
+  label: "Fall Monday"
+}, {
+  value: ServiceChange.FallFriday,
+  label: "Fall Friday"
+}, {
+  value: ServiceChange.FallSaturday,
+  label: "Fall Saturday"
+}, {
+  value: ServiceChange.FallSunday,
+  label: "Fall Sunday"
+}, {
   value: ServiceChange.SummerMonday,
   label: "Summer Monday"
 }, {
