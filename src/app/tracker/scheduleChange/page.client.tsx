@@ -19,6 +19,10 @@ enum ServiceChange {
   FallFriday = "fall26Fri",
   FallSaturday = "fall26Sat",
   FallSunday = "fall26Sun",
+  FallJuneMonday = "fallJune26Mon",
+  FallJuneFriday = "fallJune26Fri",
+  FallJuneSaturday = "fallJune26Sat",
+  FallJuneSunday = "fallJune26Sun",
   SummerMonday = "summer26Mon",
   SummerFriday = "summer26Fri",
   SummerSaturday = "summer26Sat",
@@ -40,6 +44,22 @@ const serviceChanges = {
   },
   [ServiceChange.FallSunday]: {
     before: "2026-08-23",
+    after: "2026-09-13",
+  },
+  [ServiceChange.FallJuneMonday]: {
+    before: "2026-06-22",
+    after: "2026-09-14",
+  },
+  [ServiceChange.FallJuneFriday]: {
+    before: "2026-06-26",
+    after: "2026-09-11",
+  },
+  [ServiceChange.FallJuneSaturday]: {
+    before: "2026-06-20",
+    after: "2026-09-12",
+  },
+  [ServiceChange.FallJuneSunday]: {
+    before: "2026-06-21",
     after: "2026-09-13",
   },
   [ServiceChange.SummerMonday]: {
@@ -72,6 +92,18 @@ const serviceChangeOptions = [{
 }, {
   value: ServiceChange.FallSunday,
   label: "Fall Sunday"
+}, {
+  value: ServiceChange.FallJuneMonday,
+  label: "Fall Monday vs Pre-summer"
+}, {
+  value: ServiceChange.FallJuneFriday,
+  label: "Fall Friday vs Pre-summer"
+}, {
+  value: ServiceChange.FallJuneSaturday,
+  label: "Fall Saturday vs Pre-summer"
+}, {
+  value: ServiceChange.FallJuneSunday,
+  label: "Fall Sunday vs Pre-summer"
 }, {
   value: ServiceChange.SummerMonday,
   label: "Summer Monday"
