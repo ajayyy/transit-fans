@@ -51,7 +51,7 @@ const serviceChanges = {
     after: "2026-09-14",
   },
   [ServiceChange.FallJuneFriday]: {
-    before: "2026-06-26",
+    before: "2026-06-12",
     after: "2026-09-11",
   },
   [ServiceChange.FallJuneSaturday]: {
@@ -67,7 +67,7 @@ const serviceChanges = {
     after: "2026-06-29",
   },
   [ServiceChange.SummerFriday]: {
-    before: "2026-06-26",
+    before: "2026-06-12",
     after: "2026-07-03",
   },
   [ServiceChange.SummerSaturday]: {
