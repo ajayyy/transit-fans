@@ -51,7 +51,7 @@ export default function Home() {
 
         <ul className="project-list">
           <li>
-            <Link href="/tracker/scheduleChange">Service cut tracker</Link>
+            <Link href="/tracker/scheduleChange">Service change tracker</Link>
           </li>
           <li>
             <Link href="/tracker/bus-count">Bus availablity graph</Link>
